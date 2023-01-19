@@ -1,0 +1,24 @@
+/* Tic Tac Toe game in REXX */
+board = "         "
+player = "X"
+
+do until position(" " , board) = 0
+    say "Current board:"
+    say board
+    say "Player " player ", enter a row and column (1-3) to play:"
+    parse pull row col
+    if row < 1 or row > 3 or col < 1 or col > 3 then do
+        say "Invalid input, try again."
+    end
+    if substr(board, (row-1)*3+col, 1) \= " " then do
+        say "That spot is already taken, try again."
+    end
+    board = substr(board, 1, (row-1)*3+col-1) || player || substr(board, (row-1)*3+col+1)
+    if player = "X" then player = "O" else player = "X"
+    if board = "XXX" || board = "OOO" then do
+        say "Player " player " wins!"
+        exit
+    end
+end
+
+say "It's a tie!"
