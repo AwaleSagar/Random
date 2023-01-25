@@ -1,0 +1,15 @@
+/* REXX tool to view members of a PDS dataset */
+
+/* Prompt user for the dataset name */
+say 'Enter the name of the PDS dataset:'
+parse pull dataset
+
+/* Use the "LISTDS" ISPF command to view the members of the dataset */
+"LISTDS "dataset" MEMBERS"
+
+/* Parse the output of the LISTDS command */
+parse value sysdsn("'"dataset"'") with dsn member .
+do while (member \= '')
+  say member
+  parse value sysdsn("'"dataset"'") with dsn member .
+end
