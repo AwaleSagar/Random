@@ -1,0 +1,8 @@
+/* REXX tool to go to ISPF option 3.4 and display a specific PDS dataset in view mode */
+
+/* Prompt user for the dataset name */
+say 'Enter the name of the PDS dataset:'
+parse pull dataset
+
+/* Go to ISPF option 3.4 in view mode */
+"ISREDIT CMD(ISPF 3.4) NEWAPPL(DSLIST) DATASET('"dataset"') VIEW"
