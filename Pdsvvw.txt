@@ -1,0 +1,33 @@
+It seems like you are looking for a REXX tool to open a input PDS in view mode. Here is a possible code block that might help you:
+
+```
+/*REXX*/
+/*This code is based on the REXX tool from https://mainframesf1.com/2020/02/27/rexx-tool-open-a-dataset-directly-from-jcl-including-substituting-symbolic/⁶*/
+/*It assumes that the input PDS name is in the variable PDSNAME*/
+
+/*Get the current screen name*/
+ADDRESS ISPEXEC "VGET (ZSCREENN) SHARED"
+
+/*Save the current screen name*/
+SCREENN = ZSCREENN
+
+/*Open the input PDS in view mode*/
+ADDRESS ISPEXEC "VIEW DATASET('"PDSNAME"')"
+
+/*Return to the previous screen*/
+ADDRESS ISPEXEC "SELECT PANEL("SCREENN")"
+```
+
+I hope this code block works for you. Please let me know if you have any questions or feedback. 😊
+
+Source: Conversation with Bing, 14/02/2023(1) REXX TOOL – Open a dataset directly from JCL including substituting .... https://mainframesf1.com/2020/02/27/rexx-tool-open-a-dataset-directly-from-jcl-including-substituting-symbolic/#:~:text=Assign%20the%20new%20REXX%20TOOL%20name%20%28in%20our,look%20at%20the%20post%20Top%20Mainframe%20REXX%20Tools Accessed 14/02/2023.
+(2) REXX TOOL – Open a dataset directly from JCL including substituting .... https://mainframesf1.com/2020/02/27/rexx-tool-open-a-dataset-directly-from-jcl-including-substituting-symbolic/ Accessed 14/02/2023.
+(3) Top Mainframe REXX Tools | F1 for Mainframe. https://mainframesf1.com/2020/02/11/top-mainframe-rexx-tools/ Accessed 14/02/2023.
+(4) How to open a PDS EDIT/Browse/VIew mode -IBM Mainframes. https://ibmmainframes.com/about31599.html Accessed 14/02/2023.
+(5) To open a PDS/ Member using REXX -IBM Mainframes. https://ibmmainframes.com/about34276.html Accessed 14/02/2023.
+(6) Rexx macros to view given member in a PDS - REXX - Tek-Tips. https://www.tek-tips.com/viewthread.cfm?qid=1685882 Accessed 14/02/2023.
+(7) Rexx to Save in View Mode - mainframewizard.com. https://mainframewizard.com/content/rexx-save-view-mode Accessed 14/02/2023.
+(8) Using Data REXX - IBM. https://www.ibm.com/docs/en/SSZJDU_6.2.0/com.ibm.itnetviewforzos.doc_6.2/dqg_rex_drexx.htm Accessed 14/02/2023.
+(9) REXX TOOL – Open a dataset directly from JCL including substituting .... https://mainframesf1.com/2020/02/27/rexx-tool-open-a-dataset-directly-from-jcl-including-substituting-symbolic/ Accessed 14/02/2023.
+(10) How to open a PDS EDIT/Browse/VIew mode -IBM Mainframes. https://ibmmainframes.com/about31599.html Accessed 14/02/2023.
+(11) Display dataset in edit mode using rexx -IBM Mainframes. https://ibmmainframes.com/about57708.html Accessed 14/02/2023.
